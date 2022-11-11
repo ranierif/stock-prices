@@ -13,6 +13,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $title = 'Consulta de preços de Stocks';
+        return view('home', compact('title'));
     }
 }
