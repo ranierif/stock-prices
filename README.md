@@ -35,8 +35,9 @@ Para a instalação e rodar o projeto podemos fazer de dois jeitos:
 - [x] Criação dos Repositories & Interfaces
     - [x] `App/Repositories/BaseRepository`
     - [x] `App/Interfaces/BaseInterface`
-- [ ] Criação dos Services
-    - [ ] `App/Models/StockPriceService`
+    - [x] `App/Repositories/StockPriceRepository`
+- [x] Criação dos Services
+    - [x] `App/Models/StockPriceService`
 - [ ] Criação dos Resources
     - [ ] `App/Http/Resources/Stock/StockPriceResource`
 - [ ] Criação dos Controllers & Functions
