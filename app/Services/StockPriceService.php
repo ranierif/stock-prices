@@ -45,7 +45,7 @@ class StockPriceService
                     $this->stockPriceRepository->update($stockPrice, $data);
                     $stockPrice->fresh();
                 } else {
-                    $this->stockPriceRepository->create($data);
+                    $stockPrice = $this->stockPriceRepository->create($data);
                 }
             } catch (\Exception $e) {
                 throw new \Exception($e->getMessage());
