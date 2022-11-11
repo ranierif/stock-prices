@@ -40,10 +40,10 @@ Para a instalação e rodar o projeto podemos fazer de dois jeitos:
     - [x] `App/Models/StockPriceService`
 - [x] Criação dos Resources
     - [x] `App/Http/Resources/StockPriceResource`
-- [ ] Criação dos Controllers & Functions
-    - [ ] `App/Http/Controllers/HomeController` (apenas index)
-- [ ] Criação das Routes
-    - [ ] raiz `/ `(name = home)
+- [x] Criação dos Controllers & Functions
+    - [x] `App/Http/Controllers/HomeController` (apenas index)
+- [x] Criação das Routes
+    - [x] raiz `/ `(name = home)
 - [ ] Criação das Views
     - [ ] `resources/views/home.blade.php`
 - [ ] Criação dos Requests
