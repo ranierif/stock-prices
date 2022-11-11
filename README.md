@@ -22,8 +22,8 @@ Para a instalação e rodar o projeto podemos fazer de dois jeitos:
 3. Na pasta do projeto rode o comando `/vendor/bin/sail up -d`;
 4. Com isso o [Sail](https://laravel.com/docs/9.x/sail) (que roda o docker) vai instalar os containers da aplicação com os componentes necessários;
 5. Após o docker estar rodando na sua máquina, você precisa aplicar as *migrations* no banco de dados através do comando `vendor/bin/sail artisan migrate`;
-6. Com as *migrations* aplicadas, você poderá acessar a aplicação através do seu navegador pela url: [http://localhost](http://localhost);
-7. Rode o comando `npm install & npm run dev`;
+6. Rode o comando `npm install & npm run dev`;
+7. Agora você pode acessar a aplicação através do seu navegador pela url: [http://localhost](http://localhost);
 
 :warning: *Importante: Antes de rodar o docker, verifique se não esteja rodando outro projeto com o docker na sua máquina.* 
 
@@ -38,8 +38,8 @@ Para a instalação e rodar o projeto podemos fazer de dois jeitos:
     - [x] `App/Repositories/StockPriceRepository`
 - [x] Criação dos Services
     - [x] `App/Models/StockPriceService`
-- [ ] Criação dos Resources
-    - [ ] `App/Http/Resources/Stock/StockPriceResource`
+- [x] Criação dos Resources
+    - [x] `App/Http/Resources/StockPriceResource`
 - [ ] Criação dos Controllers & Functions
     - [ ] `App/Http/Controllers/HomeController` (apenas index)
 - [ ] Criação das Routes
