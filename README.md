@@ -32,9 +32,9 @@ Para a instalação e rodar o projeto podemos fazer de dois jeitos:
 - [x] Configuração do ambiente
 - [x] Criação das migrations & models
     - [x] `App/Models/StockPrice`
-- [ ] Criação dos Repositories & Interfaces
-    - [ ] `App/Repositories/BaseRepository`
-    - [ ] `App/Repositories/BaseInterface`
+- [x] Criação dos Repositories & Interfaces
+    - [x] `App/Repositories/BaseRepository`
+    - [x] `App/Interfaces/BaseInterface`
 - [ ] Criação dos Services
     - [ ] `App/Models/StockPriceService`
 - [ ] Criação dos Resources
