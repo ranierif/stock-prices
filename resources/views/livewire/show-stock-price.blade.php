@@ -30,7 +30,7 @@
             </div>
         </div>
         <div class="col-md-6">
-            <div class="h-100 p-5 bg-light border rounded-3">
+            <div class="p-5 bg-light border rounded-3">
                 @if($stockPriceResponse)
                     <h2>
                         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-building-fill" viewBox="0 0 16 16">
