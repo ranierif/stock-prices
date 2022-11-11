@@ -44,9 +44,9 @@ Para a instalação e rodar o projeto podemos fazer de dois jeitos:
     - [x] `App/Http/Controllers/HomeController` (apenas index)
 - [x] Criação das Routes
     - [x] raiz `/ `(name = home)
-- [ ] Criação das Views
-    - [ ] `resources/views/home.blade.php`
-- [ ] Criação dos Requests
+- [x] Criação das Views
+    - [x] `resources/views/home.blade.php`
+- [x] Criação dos Requests
     - [ ] `App/Http/Requests/StockPriceRequest`
 - [ ] Instalação e Configuração do Livewire
     - [ ] Component: `App/Http/Livewire/GetStockPrice`
