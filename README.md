@@ -23,7 +23,7 @@ Para a instalação e rodar o projeto podemos fazer de dois jeitos:
 
 ### Com Docker
 
-1. Na pasta do projeto rode o comando `/vendor/bin/sail up -d`;
+1. Na pasta do projeto rode o comando `vendor/bin/sail up -d`;
 2. Com isso o [Sail](https://laravel.com/docs/9.x/sail) (que roda o docker) vai instalar os containers da aplicação com os componentes necessários;
 3. Após o docker estar rodando na sua máquina, você precisa aplicar as *migrations* no banco de dados através do comando `vendor/bin/sail artisan migrate`;
 4. Rode o comando `npm install & npm run dev`;
@@ -36,6 +36,16 @@ Para a instalação e rodar o projeto podemos fazer de dois jeitos:
 4. Rode o comando `php artisan serve`, pronto agora você pode acessar a aplicação através do seu navegador pela url: [http://localhost:8000](http://localhost:8000);
 
 :warning: *Importante: Antes de rodar o docker, verifique se não esteja rodando outro projeto com o docker na sua máquina.* 
+
+## :battery: Testes
+
+Para rodar os testes da aplicação, siga os passos:
+
+### Com Docker
+1. Rode o comando `vendor/bin/sail artisan test`
+
+### Sem Docker
+1. Rode o comando `php artisan test`
 
 ## :dart: Tarefas
 
