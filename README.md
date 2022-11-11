@@ -75,3 +75,4 @@ Para rodar os testes da aplicação, siga os passos:
     - [x] `App/ExternalApis/Iex/IexExternalApi`
 - [x] Implementação do frontend
 - [x] Implementação do request e response da Api e registro no banco de dados junto com o retorno para o frontend o resultado buscado
+- [x] Criação dos testes unitários
