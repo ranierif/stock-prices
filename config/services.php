@@ -31,4 +31,8 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'IEX' => [
+        'api_token' => env('IEX_API_TOKEN'),
+    ],
+
 ];

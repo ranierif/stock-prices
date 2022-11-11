@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 interface StockPriceRepositoryInterface
 {
     public function findBySymbol(string $symbol);
+    public function create(array $stockPrice);
 }
