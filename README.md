@@ -47,10 +47,10 @@ Para a instalação e rodar o projeto podemos fazer de dois jeitos:
 - [x] Criação das Views
     - [x] `resources/views/home.blade.php`
 - [x] Criação dos Requests
-    - [ ] `App/Http/Requests/StockPriceRequest`
-- [ ] Instalação e Configuração do Livewire
-    - [ ] Component: `App/Http/Livewire/GetStockPrice`
-    - [ ] Inserir o componente dentro da view `resources/views/home.blade.php`
+    - [x] `App/Http/Requests/StockPriceRequest`
+- [x] Instalação e Configuração do Livewire
+    - [x] Component: `App/Http/Livewire/GetStockPrice`
+    - [x] Inserir o componente dentro da view `resources/views/home.blade.php`
 - [ ] Configuração das chamadas da Api da [IEX](https://iexcloud.io)
     - [ ] `App/ExternalApis/Iex/IexExternalApi`
 - [ ] Implementação do frontend

@@ -6,6 +6,16 @@
 </head>
 
 <body>
+    <main>
+        <div class="container py-4">
+            @include('layouts.header')
+            @yield('content')
+            @include('layouts.footer')
+        </div>
+    </main>
 
+    @yield('styles')
+    @yield('scripts_default')
+    @yield('scripts')
 </body>
 </html>

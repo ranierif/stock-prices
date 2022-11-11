@@ -2,16 +2,24 @@
 
 namespace App\Repositories;
 
-use App\Interfaces\BaseInterface;
+use App\Interfaces\StockPriceRepositoryInterface;
 use App\Models\StockPrice;
-use App\Repositories\BaseRepository;
 
-class StockPriceRepository extends BaseRepository implements BaseInterface
+class StockPriceRepository implements StockPriceRepositoryInterface
 {
-    protected $model;
+    protected $entity;
 
     public function __construct(StockPrice $stockPrice)
     {
-        $this->model = $stockPrice;
+        $this->entity = $stockPrice;
+    }
+
+    /**
+     * Find StockPrice by symbol
+     * @return array
+     */
+    public function findBySymbol(string $symbol)
+    {
+        return $this->entity->where('symbol', $symbol)->first();
     }
 }

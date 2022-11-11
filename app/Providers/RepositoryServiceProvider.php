@@ -7,7 +7,7 @@ use Illuminate\Support\ServiceProvider;
 class RepositoryServiceProvider extends ServiceProvider
 {
     protected array $repositories = [
-        'App\Interfaces\BaseInterface' => 'App\Repositories\BaseRepository'
+        'App\Interfaces\StockPriceRepositoryInterface' => 'App\Repositories\StockPriceRepository'
     ];
 
     /**
