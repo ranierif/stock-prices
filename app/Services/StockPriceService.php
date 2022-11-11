@@ -5,6 +5,7 @@ namespace App\Services;
 use App\ExternalApis\IEXExternalApi;
 use App\Http\Resources\StockPriceResource;
 use App\Repositories\StockPriceRepository;
+use Illuminate\Support\Arr;
 
 class StockPriceService
 {
@@ -35,16 +36,28 @@ class StockPriceService
     {
         $stockPrice = $this->stockPriceRepository->findBySymbol($symbol);
 
-        if(!$stockPrice){
+        if(!$stockPrice || $stockPrice && $stockPrice->lastUpdate != $stockPrice->updated_at){
             try {
                 $quoteUpdated = $this->getUpdatedQuote($symbol);
-                $stockPrice = $this->stockPriceRepository->create($quoteUpdated->json());
+                $data = $this->filterDataFromQuote($quoteUpdated);
+
+                if($stockPrice){
+                    $this->stockPriceRepository->update($stockPrice, $data);
+                    $stockPrice->fresh();
+                } else {
+                    $this->stockPriceRepository->create($data);
+                }
             } catch (\Exception $e) {
-                return $e->getMessage();
+                throw new \Exception($e->getMessage());
             }
         }
 
-        return StockPriceResource::collection($stockPrice);
+        return $stockPrice;
+    }
+
+    public function createStockPrice(array $array)
+    {
+
     }
 
     /**
@@ -59,10 +72,35 @@ class StockPriceService
     {
         $quoteResponse = (new IEXExternalApi())->getQuote($symbol);
 
-        if($quoteResponse->status != 200){
+        if($quoteResponse->status() != 200){
             throw new \Exception(__('Não foi possível encontrar a ação informada.'));
         }
 
-        return $quoteResponse;
+        return $quoteResponse->json();
+    }
+
+    /**
+     * Filter data from quote
+     *
+     * @param  array $quote
+     * @return array
+     */
+    public function filterDataFromQuote(array $quote)
+    {
+        $data = Arr::only($quote, array(
+            'symbol',
+            'companyName',
+            'latestPrice',
+            'avgTotalVolume',
+            'latestUpdate',
+            'primaryExchange',
+            'change',
+            'currency',
+            'marketCap')
+        );
+
+        Arr::set($data, 'latestUpdate', date('Y-m-d H:i:s', $data['latestUpdate'] / 1000));
+
+        return $data;
     }
 }

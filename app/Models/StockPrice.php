@@ -24,7 +24,7 @@ class StockPrice extends Model
     protected $fillable = [
         'id',
         'symbol',
-        'name',
+        'companyName',
         'latestPrice',
         'avgTotalVolume',
         'latestUpdate',

@@ -15,7 +15,6 @@ class StockPriceResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'id' => $this->id,
             'symbol' => $this->symbol,
             'name' => $this->name,
             'latestPrice' => $this->latestPrice,

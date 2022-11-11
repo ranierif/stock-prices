@@ -24,12 +24,12 @@ class ShowStockPrice extends Component
      */
     public $symbol;
     public $can_submit = false;
+    public $loadingResult = false;
 
     /**
      * Data
      */
     public $stockPriceResponse;
-    private $stockPriceService;
 
     /**
      * Mount the component
@@ -48,8 +48,11 @@ class ShowStockPrice extends Component
     public function updated($propertyName)
     {
         $this->can_submit = false;
+        $this->loadingResult = true;
+        $this->stockPriceResponse = null;
         $this->validateOnly($propertyName);
         $this->can_submit = true;
+        $this->loadingResult = false;
     }
 
     /**
@@ -57,17 +60,27 @@ class ShowStockPrice extends Component
      */
     public function submit()
     {
+        $this->loadingResult = true;
+
         try {
             $this->validate();
         } catch (\Illuminate\Validation\ValidationException $e) {
+            $this->loadingResult = false;
             return session()->flash('danger', $e->getMessage());
         }
 
-        try {
-            $this->stockPriceResponse = app(StockPriceService::class)->getInformation($this->symbol);
-        } catch (QueryException $exception) {
-            session()->flash('danger', $exception->errorInfo);
+        if($this->validate()){
+            try {
+                $information = app(StockPriceService::class)->getInformation($this->symbol);
+                if($information){
+                    $this->stockPriceResponse = $information;
+                }
+            } catch (\Exception $e) {
+                session()->flash('danger', $e->getMessage());
+            }
         }
+
+        $this->loadingResult = false;
     }
 
     public function render()
