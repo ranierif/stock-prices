@@ -1,3 +1,5 @@
+![StockPriceScreenshot](https://github.com/github/ranierif/stock-prices/tree/master/public/public/images/screenshot.png )
+
 ## Sistema de consulta de preço de ações
 
 Sistema desenvolvido para realizar consulta no preço de ações do mercado financeiro com base na Api da [IEX](https://iexcloud.io).
