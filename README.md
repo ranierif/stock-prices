@@ -1,4 +1,4 @@
-![StockPriceScreenshot](https://github.com/github/ranierif/stock-prices/tree/master/public/public/images/screenshot.png )
+![StockPriceScreenshot](https://github.com/ranierif/stock-prices/blob/master/public/images/screenshot.png?raw=true)
 
 ## Sistema de consulta de preço de ações
 
