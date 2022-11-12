@@ -2,23 +2,39 @@
 
 namespace App\Repositories;
 
-use App\Interfaces\StockPriceRepositoryInterface;
+use App\Repositories\Interfaces\StockPriceRepositoryInterface;
 use App\Models\StockPrice;
+use Illuminate\Database\Eloquent\Collection;
 
 class StockPriceRepository implements StockPriceRepositoryInterface
 {
     protected $entity;
 
+    /**
+    * StockPriceRepository constructor.
+    *
+    * @param \App\Models\StockPrice $stockPrice
+    */
     public function __construct(StockPrice $stockPrice)
     {
         $this->entity = $stockPrice;
     }
 
     /**
+     * Get all StockPrices
+     *
+     * @return object;
+     */
+    public function getAll(): Collection
+    {
+        return $this->entity->get();
+    }
+
+    /**
      * Find StockPrice by symbol
      *
-     * @param string $symbol
-     * @return object
+     * @param  string $symbol
+     * @return object;
      */
     public function findBySymbol(string $symbol)
     {
@@ -28,8 +44,8 @@ class StockPriceRepository implements StockPriceRepositoryInterface
     /**
      * Find StockPrice by symbol
      *
-     * @param int $symbol
-     * @return object
+     * @param  int $symbol
+     * @return object;
      */
     public function findById(int $id)
     {
@@ -39,21 +55,23 @@ class StockPriceRepository implements StockPriceRepositoryInterface
     /**
      * Create StockPrice
      *
-     * @param  array $stockPrice
+     * @param  array $attributes
+     * @return object;
      */
-    public function create(array $stockPrice)
+    public function create(array $attributes)
     {
-        return $this->entity->create($stockPrice);
+        return $this->entity->create($attributes);
     }
 
     /**
      * Update StockPrice
      *
-     * @param object $stockPrice
-     * @param  array $stockPriceArray
+     * @param  object $stockPrice
+     * @param  array $attributes
+     * @return bool
      */
-    public function update(object $stockPrice, array $stockPriceArray)
+    public function update(object $stockPrice, array $attributes): bool
     {
-        return $stockPrice->update($stockPriceArray);
+        return $stockPrice->update($attributes);
     }
 }

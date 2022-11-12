@@ -2,14 +2,12 @@
 
 namespace App\Providers;
 
+use App\Repositories\Interfaces\StockPriceRepositoryInterface;
+use App\Repositories\StockPriceRepository;
 use Illuminate\Support\ServiceProvider;
 
 class RepositoryServiceProvider extends ServiceProvider
 {
-    protected array $repositories = [
-        'App\Interfaces\StockPriceRepositoryInterface' => 'App\Repositories\StockPriceRepository'
-    ];
-
     /**
      * Register services.
      *
@@ -17,18 +15,9 @@ class RepositoryServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        foreach ($this->repositories as $interface => $implementation) {
-            $this->app->bind($interface, $implementation);
-        }
-    }
-
-    /**
-     * Bootstrap services.
-     *
-     * @return void
-     */
-    public function boot()
-    {
-        //
+        $this->app->bind(
+            StockPriceRepositoryInterface::class,
+            StockPriceRepository::class
+        );
     }
 }

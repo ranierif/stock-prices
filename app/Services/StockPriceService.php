@@ -40,11 +40,11 @@ class StockPriceService
                 $quoteUpdated = $this->getUpdatedQuote($symbol);
                 $data = $this->filterDataFromQuote($quoteUpdated);
 
-                if ($stockPrice) {
+                if (!$stockPrice) {
+                    $stockPrice = $this->stockPriceRepository->create($data);
+                } else {
                     $this->stockPriceRepository->update($stockPrice, $data);
                     $stockPrice->fresh();
-                } else {
-                    $stockPrice = $this->stockPriceRepository->create($data);
                 }
             } catch (\Exception $e) {
                 throw new \Exception($e->getMessage());
@@ -81,6 +81,7 @@ class StockPriceService
      */
     public function filterDataFromQuote(array $quote)
     {
+        // Filter array from response of Api IEX
         $data = Arr::only(
             $quote,
             array(
