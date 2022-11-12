@@ -3,7 +3,6 @@
 namespace App\Services;
 
 use App\ExternalApis\IEXExternalApi;
-use App\Http\Resources\StockPriceResource;
 use App\Repositories\StockPriceRepository;
 use Illuminate\Support\Arr;
 
@@ -28,7 +27,7 @@ class StockPriceService
      * Get information of Stock
      *
      * @param  string $symbol
-     * @return \App\Http\Resources\StockPriceResource
+     * @return \App\Models\StockPrice
      *
      * @throws \Exception
      */
@@ -36,12 +35,12 @@ class StockPriceService
     {
         $stockPrice = $this->stockPriceRepository->findBySymbol($symbol);
 
-        if(!$stockPrice || $stockPrice && $stockPrice->lastUpdate != $stockPrice->updated_at){
+        if (!$stockPrice || $stockPrice && $stockPrice->lastUpdate != $stockPrice->updated_at) {
             try {
                 $quoteUpdated = $this->getUpdatedQuote($symbol);
                 $data = $this->filterDataFromQuote($quoteUpdated);
 
-                if($stockPrice){
+                if ($stockPrice) {
                     $this->stockPriceRepository->update($stockPrice, $data);
                     $stockPrice->fresh();
                 } else {
@@ -53,11 +52,6 @@ class StockPriceService
         }
 
         return $stockPrice;
-    }
-
-    public function createStockPrice(array $array)
-    {
-
     }
 
     /**
@@ -72,7 +66,7 @@ class StockPriceService
     {
         $quoteResponse = (new IEXExternalApi())->getQuote($symbol);
 
-        if($quoteResponse->status() != 200){
+        if ($quoteResponse->status() != 200) {
             throw new \Exception(__('Não foi possível encontrar a ação informada.'));
         }
 
@@ -87,7 +81,9 @@ class StockPriceService
      */
     public function filterDataFromQuote(array $quote)
     {
-        $data = Arr::only($quote, array(
+        $data = Arr::only(
+            $quote,
+            array(
             'symbol',
             'companyName',
             'latestPrice',

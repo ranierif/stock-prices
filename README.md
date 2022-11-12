@@ -11,7 +11,7 @@ Sistema desenvolvido para realizar consulta no preço de ações do mercado fina
     - **[Sail](https://laravel.com/docs/9.x/sail)**
     - **[Livewire](https://laravel-livewire.com/)**
     - **[guzzlehttp](https://github.com/guzzle/guzzle)**
-
+    - **[Pint](https://laravel.com/docs/9.x/pint)**
 
 ## :space_invader: Instalação
 

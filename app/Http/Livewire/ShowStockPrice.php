@@ -3,11 +3,8 @@
 namespace App\Http\Livewire;
 
 use App\Http\Requests\StockPriceRequest;
-use App\Models\StockPrice;
-use App\Repositories\StockPriceRepository;
 use App\Services\StockPriceService;
 use App\Traits\Livewire\HasFormRequest;
-use Illuminate\Database\QueryException;
 use Livewire\Component;
 
 class ShowStockPrice extends Component
@@ -69,10 +66,10 @@ class ShowStockPrice extends Component
             return session()->flash('danger', $e->getMessage());
         }
 
-        if($this->validate()){
+        if ($this->validate()) {
             try {
                 $information = app(StockPriceService::class)->getInformation($this->symbol);
-                if($information){
+                if ($information) {
                     $this->stockPriceResponse = $information;
                 }
             } catch (\Exception $e) {
