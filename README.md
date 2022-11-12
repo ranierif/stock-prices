@@ -31,9 +31,10 @@ Para a instalação e rodar o projeto podemos fazer de dois jeitos:
 ### Sem Docker
 
 1. Na pasta do projeto rode o comando `composer install`;
-2. Após o composer instalado, você precisa aplicar as *migrations* no banco de dados através do comando `php artisan migrate`;
-3. Rode o comando `npm install & npm run dev`;
-4. Rode o comando `php artisan serve`, pronto agora você pode acessar a aplicação através do seu navegador pela url: [http://localhost:8000](http://localhost:8000);
+2. Rode o comando `php artisan key:generate`;
+3. Após o composer instalado, você precisa aplicar as *migrations* no banco de dados através do comando `php artisan migrate`;
+4. Rode o comando `npm install & npm run dev`;
+5. Rode o comando `php artisan serve`, pronto agora você pode acessar a aplicação através do seu navegador pela url: [http://localhost:8000](http://localhost:8000);
 
 :warning: *Importante: Antes de rodar o docker, verifique se não esteja rodando outro projeto com o docker na sua máquina.* 
 
