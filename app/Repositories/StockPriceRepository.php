@@ -25,7 +25,7 @@ class StockPriceRepository implements StockPriceRepositoryInterface
      *
      * @return object;
      */
-    public function getAll(): Collection
+    public function getAll()
     {
         return $this->entity->get();
     }
