@@ -95,7 +95,9 @@ class StockPriceService
             'marketCap')
         );
 
-        Arr::set($data, 'latestUpdate', date('Y-m-d H:i:s', $data['latestUpdate'] / 1000));
+        // Convert latestUpdate to Date
+        $latestUpdate = now()->parse($data['latestUpdate'] / 1000)->format('Y-m-d H:i:s');
+        Arr::set($data, 'latestUpdate', $latestUpdate);
 
         return $data;
     }
