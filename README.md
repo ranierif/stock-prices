@@ -50,10 +50,6 @@ Para rodar os testes da aplicação, siga os passos:
 ### Sem Docker
 1. Rode o comando `php artisan test`
 
-```diff
-# Caso precisar, crie a pasta Unit dentro da pasta tests.
-```
-
 ## :dart: Tarefas
 
 - [x] Configuração do ambiente

@@ -31,4 +31,18 @@ class ShowStockPriceTest extends TestCase
 
         $this->assertDatabaseHas('stock_prices', $request);
     }
+
+    /** @test */
+    public function test_show_stock_price_form_with_wrong_symbol()
+    {
+        $request = [
+            'symbol' => 'AAPL1',
+        ];
+
+        Livewire::test(ShowStockPrice::class)
+            ->set('symbol', $request['symbol'])
+            ->call('submit');
+
+        $this->assertDatabaseMissing('stock_prices', $request);
+    }
 }

@@ -16,4 +16,11 @@ class IEXExternalApiTest extends TestCase
         $quoteResponse = (new IEXExternalApi())->getQuote('AAPL');
         $this->assertTrue(($quoteResponse->status() == 200) ? true : false);
     }
+
+    /** @test */
+    public function test_third_party_api_request_quote_from_wrong_symbol()
+    {
+        $quoteResponse = (new IEXExternalApi())->getQuote('AAPL1');
+        $this->assertTrue(($quoteResponse->status() != 200) ? true : false);
+    }
 }
