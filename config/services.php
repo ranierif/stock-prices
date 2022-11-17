@@ -33,6 +33,7 @@ return [
 
     'IEX' => [
         'api_token' => env('IEX_API_TOKEN'),
+        'api_endpoint' => env('IEX_API_ENDPOINT')
     ],
 
 ];

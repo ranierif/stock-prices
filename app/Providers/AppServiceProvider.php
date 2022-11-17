@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\ExternalApis\IEXExternalApi;
+use GuzzleHttp\Client;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -13,7 +15,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->singleton(IEXExternalApi::class, function () {
+            return new IEXExternalApi(new Client([
+                'base_uri' => config('services.IEX.api_endpoint'),
+            ]));
+        });
     }
 
     /**

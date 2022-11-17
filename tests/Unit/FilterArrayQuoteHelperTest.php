@@ -67,7 +67,7 @@ class FilterArrayQuoteHelperTest extends TestCase
             'marketCap'
         ];
 
-        foreach($arrayFinal as $arrayFinalKey){
+        foreach ($arrayFinal as $arrayFinalKey) {
             $this->assertArrayHasKey($arrayFinalKey, $filter);
         }
     }

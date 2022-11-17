@@ -4,7 +4,6 @@ namespace App\Repositories;
 
 use App\Repositories\Interfaces\StockPriceRepositoryInterface;
 use App\Models\StockPrice;
-use Illuminate\Database\Eloquent\Collection;
 
 class StockPriceRepository implements StockPriceRepositoryInterface
 {

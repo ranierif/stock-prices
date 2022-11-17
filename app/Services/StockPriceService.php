@@ -5,23 +5,26 @@ namespace App\Services;
 use App\ExternalApis\IEXExternalApi;
 use App\Helpers\FilterArrayQuoteHelper;
 use App\Repositories\StockPriceRepository;
-use Illuminate\Support\Arr;
 
 class StockPriceService
 {
     /**
      * @var $stockPriceRepository
+     * @var $IEXExternalApi
      */
     protected $stockPriceRepository;
+    protected $IEXExternalApi;
 
     /**
      * StockPriceService constructor
      *
      * @param \App\Repositories\StockPriceRepository $stockPriceRepository
+     * @param \App\ExternalApis\IEXExternalApi $IEXExternalApi
      */
-    public function __construct(StockPriceRepository $stockPriceRepository)
+    public function __construct(StockPriceRepository $stockPriceRepository, IEXExternalApi $IEXExternalApi)
     {
         $this->stockPriceRepository = $stockPriceRepository;
+        $this->IEXExternalApi = $IEXExternalApi;
     }
 
     /**
@@ -39,7 +42,7 @@ class StockPriceService
         if (!$stockPrice || $stockPrice && $stockPrice->lastUpdate != $stockPrice->updated_at) {
             try {
                 $quoteUpdated = $this->getUpdatedQuote($symbol);
-                $data = (new FilterArrayQuoteHelper())->clear($quoteUpdated);;
+                $data = (new FilterArrayQuoteHelper())->clear($quoteUpdated);
 
                 if (!$stockPrice) {
                     $stockPrice = $this->stockPriceRepository->create($data);
@@ -65,12 +68,11 @@ class StockPriceService
      */
     public function getUpdatedQuote(string $symbol)
     {
-        $quoteResponse = (new IEXExternalApi())->getQuote($symbol);
-
-        if ($quoteResponse->status() != 200) {
+        try {
+            $quoteResponse = $this->IEXExternalApi->getQuote($symbol);
+            return $quoteResponse;
+        } catch(\Exception $e) {
             throw new \Exception(__('Não foi possível encontrar a ação informada.'));
         }
-
-        return $quoteResponse->json();
     }
 }
